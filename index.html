@@ -73,11 +73,11 @@
             <source src="static/videos/objectreact_overview.mp4" type="video/mp4">
           </video>
           <h2 class="subtitle has-text-centered">
-            <b style="color:rgb(0, 0, 138);">ObjectReact</b> agents navigate using a
-            learned controller conditioned on a
+            <b style="color:rgb(0, 0, 138);">ObjectReact</b> agent navigates using a
+            learnt controller conditioned on a
             <b><i style="color:rgb(0, 72, 0);">WayObject Costmap</i></b> representation,
             which breaks down visible objects by distance to the goal. Object distances are
-            estimated using an object-level topological map.
+            estimated using an object-level <i>relative</i> 3D scene graph.
           </h2>
         </div>
       </div>
@@ -361,7 +361,7 @@
               </div>
             </div>
             <h2><b>Same camera between mapping and execution.</b> The map uses a prior
-               run on the Unitree Go1 quadruped robot.</h2>
+              run on the Unitree Go1 quadruped robot.</h2>
           </div>
           <div class="carousel-item has-background">
             <div class="columns is-centered has-text-centered">
@@ -383,32 +383,32 @@
                 </h2>
               </div>
               <div class="column">
-                <video controls muted loop playsinline height="80%" width="80%">
+                <video controls muted loop playsinline height="100%" width="100%">
                   <source src="static/videos/failure_cases/imitate_failure_sim.mp4" type="video/mp4">
                 </video>
                 <h2><b>Imitate (sim):</b> Some areas in the simulator may appear to be navigable
-                when they are blocked by an obstacle.</h2>
+                  when they are blocked by an obstacle.</h2>
               </div>
               <div class="column">
-                <video controls muted loop playsinline height="80%" width="80%">
+                <video controls muted loop playsinline height="100%" width="100%">
                   <source src="static/videos/failure_cases/reverse_failure_sim.mp4" type="video/mp4">
                 </video>
                 <h2><b>Reverse (sim):</b> The reverse task requires navigating from perspectives
-                that are very different from those seen during the mapping run.</h2>
+                  that are very different from those seen during the mapping run.</h2>
               </div>
               <div class="column">
-                <video controls muted loop playsinline height="80%" width="80%">
+                <video controls muted loop playsinline height="100%" width="100%">
                   <source src="static/videos/failure_cases/shortcut_failure_sim.mp4" type="video/mp4">
                 </video>
                 <h2><b>Shortcut (sim):</b> Diverging from mapping run and facing away from the goal
                   can lead to uninformative relative costs.</h2>
               </div>
               <div class="column">
-                <video controls muted loop playsinline height="80%" width="80%">
+                <video controls muted loop playsinline height="100%" width="100%">
                   <source src="static/videos/failure_cases/alt_goal_failure_sim.mp4" type="video/mp4">
                 </video>
                 <h2><b>Alt Goal (sim):</b> The policy does not leave a large margin
-                 around obstacles, which can lead to collisions during deployment.</h2>
+                  around obstacles, which can lead to collisions during deployment.</h2>
               </div>
             </div>
             <h2><b>Failure cases.</b> Due to the challenging sim-to-real and
