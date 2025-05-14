@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="ObjectReact: Learning Object-Relative Control for Visual Navigation">
+  <meta property="og:title" content="ObjectReact" />
+  <meta property="og:description" content="ObjectReact: Learning Object-Relative Control for Visual Navigation" />
+  <meta property="og:url" content="https://object-react.github.io/" />
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <!-- <meta property="og:image" content="static/image/banner_image.png" /> -->
+  <!-- <meta property="og:image:width" content="1200" /> -->
+  <!-- <meta property="og:image:height" content="630" /> -->
+
+
+  <!-- <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG"> -->
+  <!-- <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG"> -->
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <!-- <meta name="twitter:image" content="static/images/your_twitter_banner_image.png"> -->
+  <!-- <meta name="twitter:card" content="summary_large_image"> -->
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="visual navigation, topological, object, learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ObjectReact</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">ObjectReact: Learning Object-Relative Control for Visual Navigation
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <p>Anonymous Authors</p>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="hero is-light">
+    <div class="hero-body">
+      <!-- Paper video. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-three-fifths">
+          <video id="objectreact-demo-teaser" autoplay controls muted loop playsinline height="100%">
+            <source src="static/videos/objectreact_overview.mp4" type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+            <b style="color:rgb(0, 0, 138);">ObjectReact</b> agents navigate using a
+            learned controller conditioned on a
+            <b><i style="color:rgb(0, 72, 0);">WayObject Costmap</i></b> representation,
+            which breaks down visible objects by distance to the goal. Object distances are
+            estimated using an object-level topological map.
+          </h2>
+        </div>
+      </div>
+  </section>
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Visual navigation using only a single camera and a topological map has
+              recently become an appealing alternative to methods that require
+              additional sensors and 3D maps. This is typically achieved through an
+              <b><i>image-relative</i></b> approach to estimating control from a given pair
+              of current observation and subgoal image. However, image-level
+              representations of the world have limitations because images are strictly
+              tied to the agent's pose and embodiment. In contrast, objects, being a
+              property of the map, offer an embodiment- and trajectory-invariant world
+              representation. In this work, we present a new paradigm of learning
+              <b><i>object-relative</i></b> control that exhibits several desirable
+              characteristics:
+              <br><br>
+              <b><i>a)</i></b> New routes can be traversed without strictly
+              requiring to imitate prior experience,
+              <br>
+              <b><i>b)</i></b> The control prediction
+              problem can be decoupled from solving the image matching problem,
+              and
+              <br>
+              <b><i>c)</i></b> High invariance can be achieved in cross-embodiment
+              deployment for variations across both training-testing and
+              mapping-execution settings.
+              <br><br>
+              We propose a topometric map representation
+              in the form of a <b><i>relative</i></b> 3D scene graph, which is used to
+              obtain more informative object-level global path planning costs. We train
+              a local controller, dubbed <b><i>ObjectReact</i></b>, conditioned directly on
+              a high-level <b><i style="color:rgb(0, 72, 0);">"WayObject Costmap"</i></b>
+              representation that eliminates the
+              need for an explicit RGB input. We demonstrate the advantages of learning
+              object-relative control over its
+              image-relative counterpart across sensor height variations and multiple
+              navigation tasks that challenge the underlying spatial understanding
+              capability, e.g., navigating a map trajectory in the reverse direction.
+              We further show that our sim-only policy is able to generalize well to
+              real-world indoor environments.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pipeline figure -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">ObjectReact Pipeline</h2>
+        </div>
+      </div>
+      <div class="columns is-centered has-text-centered">
+        <img id="MethodPipeline" src="static/images/pipeline_illustration.png" width="100%">
+      </div>
+      <div class="columns is-centered has-text-centered">
+        <h2 class="subtitle has-text-centered">
+          <!-- <b style="color:rgb(0, 0, 138);">Object-Relative Navigation Pipeline.</b><br> -->
+          <b>a) Mapping:</b> We construct a topometric map as
+          a relative 3D scene graph, where image segments are used as object nodes, which are connected
+          intra-image using 3D Euclidean distances and inter-image using object association. <b>b) Execution:</b>
+          Given the map, we localize each of the query objects and compute its path to the goal node; we
+          assign these path lengths to the object's segmentation mask, forming a
+          <b><i style="color:rgb(0, 72, 0);">“WayObject Costmap”</i></b> for
+          control prediction. <b>c) Training:</b> We train a model to learn an
+          <b style="color:rgb(0, 0, 138);">“ObjectReact”</b> controller that predicts
+          trajectory rollouts from WayObject Costmaps.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deployment Videos -->
+  <section class="hero is-light">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Cross-Embodiment Deployment</h2>
+        </div>
+      </div>
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <video controls muted autoplay loop playsinline height="100%" width="100%">
+            <source src="static/videos/cross_embodiment/PhoneMap_board.mp4" type="video/mp4">
+          </video>
+          <p><b>Phone Video:</b> Used to generate the object-level map.</p>
+        </div>
+        <div class="column">
+          <video controls muted autoplay loop playsinline height=100%" width=100%">
+            <source src="static/videos/cross_embodiment/CrossEmbodiment_phoneMap_robotDog_board_output.mp4"
+              type="video/mp4">
+          </video>
+          <p><b>a) Cross-embodiment deployment</b> between mapping and execution</p>
+        </div>
+        <div class="column">
+          <video controls muted autoplay loop playsinline height=100%" width=100%">
+            <source src="static/videos/cross_embodiment/Obstacles_board_output.mp4" type="video/mp4">
+          </video>
+          <p><b>b) Avoids new obstacles</b> not present during mapping</p>
+        </div>
+        <div class="column">
+          <video controls muted autoplay loop playsinline height=100%" width=100%">
+            <source src="static/videos/cross_embodiment/LowLight_board_output.mp4" type="video/mp4">
+          </video>
+          <p><b>c) Low-light</b> adaptation</p>
+        </div>
+        <div class="column">
+          <video controls muted autoplay loop playsinline height=100%" width=100%">
+            <source src="static/videos/cross_embodiment/AltGoal_humanoidRobot_output.mp4" type="video/mp4">
+          </video>
+          <p><b>d) Alt goal</b> tasks</p>
+        </div>
+      </div>
+      <h2 class="subtitle has-text-centered">
+        <b>One map video</b> (taken using a <b>phone camera</b>),
+        can be used for deployment <b>a)</b> on a quadruped robot with a different
+        camera, <b>b)</b> with new obstacles, <b>c)</b> under reduced lighting
+        conditions, and <b>d)</b> navigating to an alternative goal that was on the
+        periphery of the mapping run.
+      </h2>
+  </section>
+
+  <!-- Shortcut Task -->
+  <section class="hero is-light">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Shortcut Task</h2>
+        </div>
+      </div>
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <video controls muted loop playsinline height="85%" width="85%">
+            <source src="static/videos/shortcut/PhoneMap_shortcut.mp4" type="video/mp4">
+          </video>
+          <p><b>Long mapping video:</b> The mapping run takes a longer<br>path to the goal (using a phone camera).</p>
+        </div>
+        <div class="column">
+          <video controls muted loop playsinline height="60%" width="60%">
+            <source src="static/videos/shortcut/Shortcut_cutout_output.mp4" type="video/mp4">
+          </video>
+          <p><b>Deployment:</b> The robot takes a direct path<br>to the cardboard cutout goal.</p>
+        </div>
+      </div>
+      <h2 class="subtitle has-text-centered">
+        <b style="color:rgb(0, 0, 138);">ObjectReact</b> can take shortcuts that were not demonstrated during the
+        mapping run.
+      </h2>
+  </section>
+
+  <!-- Tasks figure -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">New Tasks</h2>
+        </div>
+      </div>
+      <div class="columns is-centered has-text-centered">
+        <img id="MethodPipeline" src="static/images/task_overview.png" width="70%">
+      </div>
+      <div class="columns is-centered has-text-centered">
+        <h2 class="subtitle has-text-centered">
+          Each column shows a topdown view with the prior experience (map) trajectory
+          displayed as a purple path from the purple circle (start) to green point (goal).
+          <b>Imitate</b> is akin to teach-and-repeat. In <b>Alt-Goal</b>, the goal object is previously
+          seen but is unvisited. In <b>Shortcut</b>, the prior mapping trajectory is made
+          longer, and agents are able to take a shortcut to achieve the goal using a
+          shorter path. In <b>Reverse</b>, the agent must travel in the opposite direction to the
+          prior mapping run.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Results</h2>
+        </div>
+      </div>
+      <div class="columns is-centered has-text-centered">
+        <img id="MethodPipeline" src="static/images/main_results_table.png" width="70%">
+      </div>
+      <div class="columns is-centered has-text-centered">
+        <h2 class="subtitle has-text-centered">
+          <b style="color:rgb(0, 0, 138);">ObjectReact</b> (Object Relative) performs
+          similarly for the simpler <b>Imitate</b> task, but significantly outperforms
+          its image relative counterpart in all other cases.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo figure -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+      </div>
+      <div class="columns is-centered has-text-centered">
+        <img id="MethodPipeline" src="static/images/qualitative_results.png" width="80%">
+      </div>
+      <div class="columns is-centered has-text-centered">
+        <h2 class="subtitle has-text-centered">
+          <b>Rollout examples.</b> <b style="color:rgb(0, 0, 138);">ObjectReact</b>
+          prefers to navigate towards areas of lower estimated cost/closer proximity
+          to the goal (green-yellow), and can avoid obstacles not present during the
+          mapping run.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other deployment videos -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h2 class="title is-3">Other Deployment Videos</h2>
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="carousel-item has-background">
+            <div class="columns is-centered has-text-centered">
+              <div class="column">
+                <video controls muted loop playsinline height="70%" width="70%">
+                  <source src="static/videos/day_night/PhoneMap_printRoom.mp4" type="video/mp4">
+                </video>
+                <h2><b>Mapping run:</b> Map video was taken during the daytime with a phone camera.</h2>
+              </div>
+              <div class="column">
+                <video controls muted loop playsinline height="60%" width="60%">
+                  <source src="static/videos/day_night/CrossEmbodiment_DayNight_robotDog_stool_output.mp4"
+                    type="video/mp4">
+                </video>
+                <h2><b>Deployment:</b> ObjectReact policy is deployed in the evening.</h2>
+              </div>
+            </div>
+            <h2><b>Adapting to new lighting conditions.</b> A map generated during the
+              day can be used at night.</h2>
+            <br>
+          </div>
+          <div class="carousel-item has-background">
+            <div class="columns is-centered has-text-centered">
+              <div class="column">
+                <video controls muted loop playsinline height="70%" width="70%">
+                  <source src="static/videos/go1_map_execute/SameEmbodiment_paper_bag_output.mp4" type="video/mp4">
+                </video>
+                <h2><b>Goal:</b> Paper bag.</h2>
+              </div>
+              <div class="column">
+                <!-- <h2 class="title is-3">Real-World Deployment</h2> -->
+                <video controls muted loop playsinline height="70%" width="70%">
+                  <source src="static/videos/go1_map_execute/SameEmbodiment_cutout_output.mp4" type="video/mp4">
+                </video>
+                <h2><b>Goal:</b> Cardboard cutout.</h2>
+              </div>
+              <div class="column">
+                <!-- <h2 class="title is-3">Real-World Deployment</h2> -->
+                <video controls muted loop playsinline height="70%" width="70%">
+                  <source src="static/videos/go1_map_execute/SameEmbodiment_board_output.mp4" type="video/mp4">
+                </video>
+                <h2><b>Goal:</b> Wooden board.</h2>
+              </div>
+              <div class="column">
+                <video controls muted loop playsinline height="70%" width="70%">
+                  <source src="static/videos/go1_map_execute/SameEmbodiment_PC_output.mp4" type="video/mp4">
+                </video>
+                <h2><b>Goal:</b> Computer.</h2>
+              </div>
+            </div>
+            <h2><b>Same camera between mapping and execution.</b> The map uses a prior
+               run on the Unitree Go1 quadruped robot.</h2>
+          </div>
+          <div class="carousel-item has-background">
+            <div class="columns is-centered has-text-centered">
+              <div class="column">
+                <video controls muted loop playsinline height="100%" width="100%">
+                  <source src="static/videos/failure_cases/failure_close_to_obstacle_output.mp4" type="video/mp4">
+                </video>
+                <h2><b>Obstacles:</b> Training demonstrations closely corner
+                  around obstacles, leaving little margin for error during deployment.</h2>
+              </div>
+              <div class="column">
+                <video controls muted loop playsinline height="100%" width="100%">
+                  <source src="static/videos/failure_cases/failure_diverged_from_map_matched_wall_output.mp4"
+                    type="video/mp4">
+                </video>
+                <h2><b>Matching large objects:</b> Large objects can have high
+                  connectivity in the topological map, leading to WayObject Costmaps
+                  that have large regions of similar cost.
+                </h2>
+              </div>
+              <div class="column">
+                <video controls muted loop playsinline height="100%" width="100%">
+                  <source src="static/videos/failure_cases/imitate_failure_sim.mp4" type="video/mp4">
+                </video>
+                <h2><b>Imitate:</b> Some areas in the simulator may appear to be navigable
+                when they are blocked by an obstacle.</h2>
+              </div>
+              <div class="column">
+                <video controls muted loop playsinline height="100%" width="100%">
+                  <source src="static/videos/failure_cases/reverse_failure_sim.mp4" type="video/mp4">
+                </video>
+                <h2><b>Reverse:</b> The reverse task can requires navigating from perspectives
+                that are very different from those seen during the mapping run.</h2>
+              </div>
+              <div class="column">
+                <video controls muted loop playsinline height="100%" width="100%">
+                  <source src="static/videos/failure_cases/shortcut_failure_sim.mp4" type="video/mp4">
+                </video>
+                <h2><b>Shortcut:</b> Diverging from mapping run and facing away from the goal
+                  can lead to uninformative relative costs.</h2>
+              </div>
+              <div class="column">
+                <video controls muted loop playsinline height="100%" width="100%">
+                  <source src="static/videos/failure_cases/alt_goal_failure_sim.mp4" type="video/mp4">
+                </video>
+                <h2><b>Alt Goal:</b> The demonstrations do not leave a large margin
+                of error when navigating around obstacles, which can lead to collisions
+                during deployment.</h2>
+              </div>
+            </div>
+            <h2><b>Failure cases.</b> Due to the challenging sim-to-real and
+              cross-embodiment conditions and inference-based perception pipeline,
+              ObjectReact has several common failure modes.</h2>
+          </div>
+          <div class="carousel-item has-background">
+            <div class="columns is-centered has-text-centered">
+              <div class="column">
+                <video controls muted loop playsinline height="70%" width="70%">
+                  <source src="static/videos/obstacles/Obstacles_board_output.mp4" type="video/mp4">
+                </video>
+                <h2><b>Goal:</b>Wooden board.</h2>
+              </div>
+              <div class="column">
+                <video controls muted loop playsinline height="70%" width="70%">
+                  <source src="static/videos/obstacles/Obstacles_cutout_output.mp4" type="video/mp4">
+                </video>
+                <h2><b>Goal:</b> Cardboard cutout.<br></h2>
+              </div>
+              <div class="column">
+                <video controls muted loop playsinline height="70%" width="70%">
+                  <source src="static/videos/obstacles/Obstacles_PC_output.mp4" type="video/mp4">
+                </video>
+                <h2><b>Goal:</b> Computer.</h2>
+              </div>
+            </div>
+            <h2><b>Obstacles.</b> ObjectReact can adapt to new or relocated objects that
+              between mapping and execution.</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the
+              <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project
+                Page Template</a>, which was adapted from the
+              <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
