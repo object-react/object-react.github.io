@@ -8,7 +8,7 @@
   <meta property="og:title" content="ObjectReact" />
   <meta property="og:description" content="ObjectReact: Learning Object-Relative Control for Visual Navigation" />
   <meta property="og:url" content="https://object-react.github.io/" />
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <!-- Path to banner image, should be in the path listed below. Optimal dimensions are 1200X630-->
   <!-- <meta property="og:image" content="static/image/banner_image.png" /> -->
   <!-- <meta property="og:image:width" content="1200" /> -->
   <!-- <meta property="og:image:height" content="630" /> -->
@@ -16,7 +16,7 @@
 
   <!-- <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG"> -->
   <!-- <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG"> -->
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <!-- Path to banner image, should be in the path listed below. Optimal dimensions are 1200X600-->
   <!-- <meta name="twitter:image" content="static/images/your_twitter_banner_image.png"> -->
   <!-- <meta name="twitter:card" content="summary_large_image"> -->
   <!-- Keywords for your paper to be indexed by-->
@@ -378,38 +378,37 @@
                     type="video/mp4">
                 </video>
                 <h2><b>Matching large objects:</b> Large objects can have high
-                  connectivity in the topological map, leading to WayObject Costmaps
+                  connectivity in the topometric map, leading to WayObject Costmaps
                   that have large regions of similar cost.
                 </h2>
               </div>
               <div class="column">
-                <video controls muted loop playsinline height="100%" width="100%">
+                <video controls muted loop playsinline height="80%" width="80%">
                   <source src="static/videos/failure_cases/imitate_failure_sim.mp4" type="video/mp4">
                 </video>
                 <h2><b>Imitate (sim):</b> Some areas in the simulator may appear to be navigable
                 when they are blocked by an obstacle.</h2>
               </div>
               <div class="column">
-                <video controls muted loop playsinline height="100%" width="100%">
+                <video controls muted loop playsinline height="80%" width="80%">
                   <source src="static/videos/failure_cases/reverse_failure_sim.mp4" type="video/mp4">
                 </video>
-                <h2><b>Reverse (sim):</b> The reverse task can requires navigating from perspectives
+                <h2><b>Reverse (sim):</b> The reverse task requires navigating from perspectives
                 that are very different from those seen during the mapping run.</h2>
               </div>
               <div class="column">
-                <video controls muted loop playsinline height="100%" width="100%">
+                <video controls muted loop playsinline height="80%" width="80%">
                   <source src="static/videos/failure_cases/shortcut_failure_sim.mp4" type="video/mp4">
                 </video>
                 <h2><b>Shortcut (sim):</b> Diverging from mapping run and facing away from the goal
                   can lead to uninformative relative costs.</h2>
               </div>
               <div class="column">
-                <video controls muted loop playsinline height="100%" width="100%">
+                <video controls muted loop playsinline height="80%" width="80%">
                   <source src="static/videos/failure_cases/alt_goal_failure_sim.mp4" type="video/mp4">
                 </video>
-                <h2><b>Alt Goal (sim):</b> The demonstrations do not leave a large margin
-                of error when navigating around obstacles, which can lead to collisions
-                during deployment.</h2>
+                <h2><b>Alt Goal (sim):</b> The policy does not leave a large margin
+                 around obstacles, which can lead to collisions during deployment.</h2>
               </div>
             </div>
             <h2><b>Failure cases.</b> Due to the challenging sim-to-real and
